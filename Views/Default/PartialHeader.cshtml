@@ -1,0 +1,103 @@
+﻿<!-- ***** Preloader Start ***** -->
+<div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+        <span class="dot"></span>
+        <div class="dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</div>
+<!-- ***** Preloader End ***** -->
+<!-- ***** Header Area Start ***** -->
+<header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- ***** Logo Start ***** -->
+                    <a href="/Default/Index" class="logo">
+                        <img src="/wooxtravel-1.0.0/assets/images/logo.png" alt="">
+                    </a>
+                    <!-- ***** Logo End ***** -->
+                    <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+                        <li><a href="/Default/Index" class="active">Ana Sayfa</a></li>
+                        <li><a href="" data-toggle="modal" data-target="#newModal">Rezervasyon Yap</a></li>
+                        <li><a href="/Admin/Dashboard/Index">Yönetim Paneli</a></li>
+                        <li><a href="/Register/Index">Kayıt Ol</a></li>
+                    </ul>
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                    <!-- ***** Menu End ***** -->
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- ***** Header Area End ***** -->
+
+<div class="modal fade"
+     id="newModal"
+     tabindex="-1"
+     role="dialog"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header border-0" style="background-color:#22b3c1">
+                <h5 class="modal-title">
+                    <span class="fw-mediumbold" style="color:white">Rezervasyon Yap</span>
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" action="/Default/NewReservation">
+                <div class="modal-body">
+                    <p class="small" style="color: #22b3c1">
+                        <b>
+                            Formu doldurduktan kısa bir süre sonra ekibimiz sizlerle iletişime geçecektir.
+                        </b>
+                    </p>
+                    <hr />
+                    <label>İsim Soyaisim</label>
+                    <input type="text" name="Name" class="form-control" required="" />
+                    <br />
+                    <label>Telefon</label>
+                    <input type="text" name="Phone" class="form-control" required="" />
+                    <br />
+                    <label>Katılımcı Sayısı</label>
+                    <input type="text" name="PersonCount" class="form-control" required="" />
+                    <br />
+                    <label>Açıklama</label>
+                    <textarea name="Description" class="form-control" required="" rows="4" cols="50"></textarea>
+                </div>
+                <div class="modal-footer border-0">
+                    <button id="btn1" class="btn btn-label" style="color: #22b3c1">
+                        Kaydet
+                    </button>
+                    <button type="button" class="btn btn-label" style="color:darkred"
+                            data-dismiss="modal">
+                        Vazgeç
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            Swal.fire({
+                title: "Başarılı!",
+                text: "@TempData["SuccessMessage"]",
+                icon: "success",
+                confirmButtonText: "Tamam"
+            });
+        });
+    </script>
+}

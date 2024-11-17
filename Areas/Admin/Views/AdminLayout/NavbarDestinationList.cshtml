@@ -1,0 +1,50 @@
+﻿@model List<Project2WooxTravel.Entities.Destination>
+
+@{
+    var eklenenGunListesi = ViewData["EklenenGünListesi"] as List<int>;
+    int index = 0;
+}
+<li class="nav-item topbar-icon dropdown hidden-caret">
+    <a class="nav-link dropdown-toggle"
+       href="#"
+       id="notifDropdown"
+       role="button"
+       data-bs-toggle="dropdown"
+       aria-haspopup="true"
+       aria-expanded="false">
+        <i class="fa fa-bell"></i>
+        <span class="notification">4</span>
+    </a>
+    <ul class="dropdown-menu notif-box animated fadeIn"
+        aria-labelledby="notifDropdown">
+        <li>
+            <div class="dropdown-title">
+                Eklenen Son 4 Tur Rotası
+            </div>
+        </li>
+        <li>
+            <div class="notif-scroll scrollbar-outer">
+                <div class="notif-center">
+                    @foreach (var item in Model)
+                    {
+                        <a href="#">
+                            <div class="notif-icon notif-primary">
+                                <i class="fa fa-plane-arrival"></i>
+                            </div>
+                            <div class="notif-content">
+                                <span class="block"> @item.Title </span>
+                                <span class="time">@eklenenGunListesi[index] gün önce eklendi</span>
+                            </div>
+                        </a>
+                        index++;
+                    }
+                </div>
+            </div>
+        </li>
+        <li>
+            <a class="see-all" href="/Admin/Destination/DestinationList">
+                Tüm Rotaları Gör<i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+    </ul>
+</li>

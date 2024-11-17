@@ -1,0 +1,103 @@
+﻿@model List<Project2WooxTravel.Entities.Reservation>
+@{
+    ViewBag.Title = "ReservationList";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="container">
+    <div class="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Rezervasyon İşlemleri</div>
+                    </div>
+                    <div class="card-body">
+                        <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#addReservation">Yeni Rezervasyon Girişi</a>
+                        <table class="table mt-3">
+                            <thead>
+                                <tr>
+                                    <th scope="col">REZERVASYON ID</th>
+                                    <th scope="col">ADI SOYADI</th>
+                                    <th scope="col">TELEFONU</th>
+                                    <th scope="col">KATILIMCI SAYISI</th>
+                                    <th scope="col">REZERVASYON TALEP TARİHİ</th>
+                                    <th scope="col">AÇIKLAMA</th>
+                                    <th scope="col">ONAYLA</th>
+                                    <th scope="col">İŞLEMLER</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.ReservationId</td>
+                                        <td>@item.Name</td>
+                                        <td>@item.Phone</td>
+                                        <td>@item.PersonCount</td>
+                                        <td>@item.ReservationDate.ToShortDateString()</td>
+                                        <td>@item.Description</td>
+                                        <td>#</td>
+                                        <td>
+                                        <a href="/Admin/Reservation/DeleteReservation/@item.ReservationId" class="btn btn-danger">Sil</a>
+                                        <a href="#" class="btn btn-success">Güncelle</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade"
+     id="addReservation"
+     tabindex="-1"
+     role="dialog"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header border-0">
+                <h5 class="modal-title">
+                    <span class="fw-mediumbold">Rezervasyon Oluştur</span>
+                </h5>
+                <button type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" action="/Admin/Reservation/AddReservation">
+                <div class="modal-body">
+                    <label>Adı Soyadı</label>
+                    <input type="text" name="Name" class="form-control" required="" />
+                    <br />
+
+                    <label>Telefonu</label>
+                    <input type="text" name="Phone" class="form-control" required="" />
+                    <br />
+
+                    <label>Katılımcı Sayısı</label>
+                    <input type="text" name="PersonCount" class="form-control" required="" />
+                    <br />
+
+                    <label>Açıklama</label>
+                    <textarea name="Description" class="form-control" required="" rows="4" cols="50"></textarea>
+                </div>
+                <div class="modal-footer border-0">
+                    <button id="btn1" class="btn btn-primary">
+                        Kaydet
+                    </button>
+                    <button type="button" class="btn btn-danger"
+                            data-dismiss="modal">
+                        Vazgeç
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,106 @@
+﻿@model List<Project2WooxTravel.Entities.Admin>
+@{
+    ViewBag.Title = "ProfileList";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="container">
+    <div class="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Kullanıcı İşlemleri</div>
+                    </div>
+                    <div class="card-body">
+                        <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#addProfile">Yeni Kullanıcı Girişi</a>
+                        <table class="table mt-3">
+                            <thead>
+                                <tr>
+                                    <th scope="col">HESAP ID</th>
+                                    <th scope="col">KULLANICI ADI</th>
+                                    <th scope="col">PAROLA</th>
+                                    <th scope="col">ADI</th>
+                                    <th scope="col">SOYADI</th>
+                                    <th scope="col">EMAİL</th>
+                                    <th scope="col">SİL</th>
+                                    <th scope="col">GÜNCELLE</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.AdminId</td>
+                                        <td>@item.UserName</td>
+                                        <td>@item.Password</td>
+                                        <td>@item.Name</td>
+                                        <td>@item.SurName</td>
+                                        <td>@item.Email</td>
+                                        <td><a href="/Admin/Profile/DeleteProfile/@item.AdminId" class="btn btn-danger">Sil</a></td>
+                                        <td><a href="#" class="btn btn-success">Güncelle</a></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade"
+     id="addProfile"
+     tabindex="-1"
+     role="dialog"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header border-0">
+                <h5 class="modal-title">
+                    <span class="fw-mediumbold">Kullanıcı Oluştur</span>
+                </h5>
+                <button type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" action="/Admin/Profile/AddProfile">
+                <div class="modal-body">
+                    <label>Kullanıcı Adı</label>
+                    <input type="text" name="UserName" class="form-control" required="" />
+                    <br />
+
+                    <label>Parola</label>
+                    <input type="text" name="Password" class="form-control" required="" />
+                    <br />
+
+                    <label>Adı</label>
+                    <input type="text" name="Name" class="form-control" required="" />
+                    <br />
+
+                    <label>Soyadı</label>
+                    <input type="text" name="SurName" class="form-control" required="" />
+                    <br />
+
+                    <label>Email</label>
+                    <input type="text" name="Email" class="form-control" required="" />
+                    <br />
+                </div>
+                <div class="modal-footer border-0">
+                    <button id="btn1" class="btn btn-primary">
+                        Kaydet
+                    </button>
+                    <button type="button" class="btn btn-danger"
+                            data-dismiss="modal">
+                        Vazgeç
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

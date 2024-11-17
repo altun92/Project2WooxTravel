@@ -1,0 +1,59 @@
+﻿@model PagedList.IPagedList<Project2WooxTravel.Entities.Destination>
+    @using PagedList
+    @using PagedList.Mvc
+
+<div class="visit-country">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="section-heading">
+                    <h2>Popüler Tur ve Seyahat Rotalarımız</h2>
+                    <p>Dünyanın Dört Bir Noktasına Alanında Uzman Rehberler Eşliğinde Seyahate Çıkmaya Hazır Mısınız?</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="items">
+                    <div class="row">
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-lg-12">
+                                <div class="item">
+                                    <div class="row">
+                                        <div class="col-lg-4 col-sm-5">
+                                            <div class="image">
+                                                <img src="@item.ImageUrl" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-8 col-sm-7">
+                                            <div class="right-content">
+                                                <h4>@item.Country</h4>
+                                                <span>@item.City</span>
+                                                <div class="main-button">
+                                                    <a href="/Default/TourDetail/@item.DestinationId">Tur Detaylarını Gör</a>
+                                                </div>
+                                                <p>
+                                                    @(item.Description.Length > 500 ? item.Description.Substring(0, 500) : item.Description)
+                                                </p>
+                                                <ul class="info">
+                                                    <li><i class="fa fa-timeline"></i> @item.DayNight Gün - @(item.DayNight - 1) Gece</li>
+                                                    <li><i class="fa fa-money-bill"></i> @item.Price ₺</li>
+                                                    <li><i class="fa fa-user"></i> @item.Capacity Kişi</li>
+                                                </ul>
+                                                <div class="text-button">
+                                                    <a href="/Default/TourDetail/@item.DestinationId">Devamını Oku...<i class="fa fa-arrow-right"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }))
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

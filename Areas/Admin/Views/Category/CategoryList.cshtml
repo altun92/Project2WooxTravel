@@ -13,6 +13,7 @@
                         <div class="card-title">Kategori İşlemleri</div>
                     </div>
                     <div class="card-body">
+                        <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#addCategory">Yeni Kategori Girişi</a>
                         <table class="table mt-3">
                             <thead>
                                 <tr>
@@ -28,16 +29,53 @@
                                     <tr>
                                         <td>@item.CategoryId</td>
                                         <td>@item.CategoryName</td>
-                                        <td><a href="#" class="btn btn-danger">Sil</a></td>
+                                        <td><a href="/Admin/Category/DeleteCategory/@item.CategoryId" class="btn btn-danger">Sil</a></td>
                                         <td><a href="#" class="btn btn-success">Güncelle</a></td>
                                     </tr>
                                 }
                             </tbody>
                         </table>
-                        <a href="#" class="btn btn-primary">Yeni Kategori Girişi</a>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade"
+     id="addCategory"
+     tabindex="-1"
+     role="dialog"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header border-0">
+                <h5 class="modal-title">
+                    <span class="fw-mediumbold">Kategori Ekle</span>
+                </h5>
+                <button type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" action="/Admin/Category/AddCategory">
+                <div class="modal-body">
+                    <label>Kategori Adı</label>
+                    <input type="text" name="CategoryName" class="form-control" required="" />
+                    <br />
+                </div>
+                <div class="modal-footer border-0">
+                    <button id="btn1" class="btn btn-primary">
+                        Kaydet
+                    </button>
+                    <button type="button" class="btn btn-danger"
+                            data-dismiss="modal">
+                        Vazgeç
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

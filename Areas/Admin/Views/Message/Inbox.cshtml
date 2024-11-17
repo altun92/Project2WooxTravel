@@ -1,0 +1,97 @@
+﻿@model List<Project2WooxTravel.Entities.Message>
+@{
+    ViewBag.Title = "Inbox";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="container">
+    <div class="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Gelen Mesaj Sayfası</div>
+                    </div>
+                    <div class="card-body">
+                        <table class="table mt-3">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">GÖNDERİCİ</th>
+                                    <th scope="col">KONU</th>
+                                    <th scope="col">TARİH</th>
+                                    <th scope="col">OKUNMA DURUMU</th>
+                                    <th scope="col">MESAJI AÇ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    count++;
+                                    <tr>
+                                        <td>@count</td>
+                                        <td>@item.SenderMail</td>
+                                        <td>@item.Subject</td>
+                                        <td>@item.SendDate.ToShortDateString()</td>
+                                        <td>@item.IsRead</td>
+                                        <td><a href="javascript:void(0);" class="btn btn-warning" onclick="openMessageModal('@item.SenderMail', '@item.Subject', '@item.SendDate.ToShortDateString()', '@item.Content')">Mesajı Aç</a></td>
+
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        <a href="/Admin/Message/SendMessage" class="btn btn-primary">Yeni Mesaj Gönderin</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="messageModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="messageModalLabel">Mesaj Detayları</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+
+            </div>
+            <div class="modal-body">
+                <p><strong>Gönderici:</strong> <span id="modalSender"></span></p>
+                <p><strong>Konu:</strong> <span id="modalSubject"></span></p>
+                <p><strong>Tarih:</strong> <span id="modalDate"></span></p>
+                <p><strong>Mesaj:</strong></p>
+                <p id="modalContent"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" id="closeModalButton">Kapat</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    function openMessageModal(sender, subject, date, message) {
+        document.getElementById("modalSender").innerText = sender;
+        document.getElementById("modalSubject").innerText = subject;
+        document.getElementById("modalDate").innerText = date;
+        document.getElementById("modalContent").innerText = message;
+
+        $('#messageModal').modal('show');
+    }
+
+    document.getElementById("closeModalButton").addEventListener("click", function () {
+        $('#messageModal').modal('hide');
+    });
+
+
+    // Modal kapatma işlemi
+    document.querySelector('[data-dismiss="modal"]').addEventListener("click", function () {
+        $('#messageModal').modal('hide');
+    });
+
+</script>

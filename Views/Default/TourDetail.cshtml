@@ -1,0 +1,89 @@
+﻿@model List<Project2WooxTravel.Entities.Destination>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+@Html.Action("PartialHead", "Default")
+
+<body>
+    @Html.Action("PartialHeader", "Default")
+    @foreach (var item in Model)
+    {
+        <div class="about-main-content" style="background:url(@item.ImageUrl)">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="content">
+                            <div class="blur-bg" style="background:url(@item.ImageUrl)"></div>
+                            <h4>@item.Country</h4>
+                            <div class="line-dec"></div>
+                            <h2>@item.City Şehri Turu Detayları</h2>
+                            <p>@item.Title</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="more-about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 align-self-center">
+                        <div class="left-image">
+                            <img src="/wooxtravel-1.0.0/assets/images/about-left-image.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="section-heading">
+                            <h2>Tur Hakkında Daha Fazlasını Keşfedin</h2>
+                            <p>Tur ile ilgili tüm detaylara aşağıdan ulaşabilirsiniz. Şartlar sizin için uygunsa Başvuru Yap butonu ile bilgilerinizi lütfen bize bildirin.</p>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="info-item">
+                                    <h4>@item.Capacity</h4>
+                                    <span>Tur Kapasitesi</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="info-item">
+                                    <h4>@item.Price</h4>
+                                    <span>Tur İçin Belirlenen En Uygun Fiyat</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="info-item">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <h4>@item.DayNight Gün - @(item.DayNight-1) Gece</h4>
+                                            <span>Tur Süresi</span>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <h4>Tur Başlığı</h4>
+                                            <span>@item.Title</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <p>@item.Description</p>
+                    <br />
+                    <div class="main-button">
+                        <a href="#" data-toggle="modal" data-target="#newModal">Rezervasyon Yap</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+    @Html.Action("PartialFooter", "Default")
+
+    @Html.Action("PartialScript", "Default")
+
+</body>
+</html>
