@@ -19,8 +19,7 @@
                                 <tr>
                                     <th scope="col">KATEGORİ ID</th>
                                     <th scope="col">KATEGORİ ADI</th>
-                                    <th scope="col">SİL</th>
-                                    <th scope="col">GÜNCELLE</th>
+                                    <th scope="col">İŞLEMLER</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -29,8 +28,10 @@
                                     <tr>
                                         <td>@item.CategoryId</td>
                                         <td>@item.CategoryName</td>
-                                        <td><a href="/Admin/Category/DeleteCategory/@item.CategoryId" class="btn btn-danger">Sil</a></td>
-                                        <td><a href="#" class="btn btn-success">Güncelle</a></td>
+                                        <td>
+                                            <a href="/Admin/Category/DeleteCategory/@item.CategoryId" class="btn btn-danger">Sil</a>
+                                            <a href="/Admin/Category/UpdateCategory/@item.CategoryId" class="btn btn-success">Güncelle</a>
+                                        </td>
                                     </tr>
                                 }
                             </tbody>

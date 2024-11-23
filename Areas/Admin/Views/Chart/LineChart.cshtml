@@ -1,0 +1,49 @@
+﻿﻿@using Newtonsoft.Json;
+@model List<Project2WooxTravel.Entities.Reservation>
+@{
+    ViewBag.Title = "LineChart";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="container">
+    <div class="page-inner">
+        <div class="row d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+            <div class="col-md-9">
+                <div class="card text-center" style="padding: 20px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
+                    <div class="card-header">
+                        <h3 style="color:darkred; font-size: 1.5rem;">Rezervasyon Yapan Kişiler ve Sayıları</h3>
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <canvas id="chartreservation" width="400" height="200"></canvas>
+                        </div>
+                        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                        <script>
+    var ctx = document.getElementById('chartreservation').getContext('2d');
+    var reservationChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: @Html.Raw(JsonConvert.SerializeObject(Model.Select(s => s.Name).ToList())),
+            datasets: [{
+                label: 'Rezervasuon Yapan ve Kişi Sayıları Grafiği',
+                data: @Html.Raw(JsonConvert.SerializeObject(Model.Select(s => s.PersonCount).ToList())),
+                backgroundColor: '#36A2EB',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

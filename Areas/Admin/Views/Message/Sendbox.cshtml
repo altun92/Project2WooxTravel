@@ -22,7 +22,6 @@
                                     <th scope="col">KONU</th>
                                     <th scope="col">TARİH</th>
                                     <th scope="col">DURUM</th>
-                                    <th scope="col">MESAJI AÇ</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -35,7 +34,6 @@
                                         <td>@item.Subject</td>
                                         <td>@item.SendDate.ToShortDateString()</td>
                                         <td>@item.IsRead</td>
-                                        <td><a href="#" class="btn btn-warning">Mesajı Aç</a></td>
                                     </tr>
                                 }
                             </tbody>
@@ -48,5 +46,24 @@
     </div>
 </div>
 
+<script>
+    function openMessageModal(sender, subject, date, message) {
+        document.getElementById("modalSender").innerText = sender;
+        document.getElementById("modalSubject").innerText = subject;
+        document.getElementById("modalDate").innerText = date;
+        document.getElementById("modalContent").innerText = message;
+
+        $('#messageModal').modal('show');
+    }
+
+    document.getElementById("closeModalButton").addEventListener("click", function () {
+        $('#messageModal').modal('hide');
+    });
 
 
+    // Modal kapatma işlemi
+    document.querySelector('[data-dismiss="modal"]').addEventListener("click", function () {
+        $('#messageModal').modal('hide');
+    });
+
+</script>

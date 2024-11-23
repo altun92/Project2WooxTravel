@@ -135,7 +135,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminLayoutController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CardController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ChartController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\DestinationController.cs" />
     <Compile Include="Areas\Admin\Controllers\MessageController.cs" />
@@ -634,6 +636,7 @@
     <Content Include="kaiadmin-lite-1.2.0\assets\js\setting-demo2.js" />
     <Content Include="kaiadmin-lite-1.2.0\charts\charts.html" />
     <Content Include="kaiadmin-lite-1.2.0\charts\sparkline.html" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\chip.png" />
     <Content Include="kaiadmin-lite-1.2.0\components\avatars.html" />
     <Content Include="kaiadmin-lite-1.2.0\components\buttons.html" />
     <Content Include="kaiadmin-lite-1.2.0\components\font-awesome-icons.html" />
@@ -652,6 +655,7 @@
     <Content Include="kaiadmin-lite-1.2.0\starter-template.html" />
     <Content Include="kaiadmin-lite-1.2.0\tables\datatables.html" />
     <Content Include="kaiadmin-lite-1.2.0\tables\tables.html" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\visa.png" />
     <Content Include="kaiadmin-lite-1.2.0\widgets.html" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -832,6 +836,12 @@
     <Content Include="Areas\Admin\Views\Reservation\ReservationList.cshtml" />
     <Content Include="Areas\Admin\Views\Profile\ProfileList.cshtml" />
     <Content Include="Areas\Admin\Views\AdminLayout\NavbarDestinationList.cshtml" />
+    <Content Include="Areas\Admin\Views\Card\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Chart\BarChart.cshtml" />
+    <Content Include="Areas\Admin\Views\Chart\LineChart.cshtml" />
+    <Content Include="Areas\Admin\Views\Chart\PieChart.cshtml" />
+    <Content Include="Areas\Admin\Views\Chart\DonutChart.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\UpdateCategory.cshtml" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
